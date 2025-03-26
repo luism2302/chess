@@ -1,20 +1,19 @@
 import pygame, sys
-from board import Square
+from board import Square, Board
 def main():
 	pygame.init()
 	screen = pygame.display.set_mode((800,800))
 	background = (0,183,235)
 	screen.fill(background)
 	pygame.display.flip()
+	board = Board(100)
+	board._draw_board(screen)
 
-	test_square_black = Square("black")
-	test_square_white = Square("white")
-
-	test_square_white._draw_square(screen)
 	while True:
 		for event in pygame.event.get():
-			if event.type == pygame.QUIT: sys.exit()
-
+			if event.type == pygame.QUIT: 
+				sys.exit()
+		board.show_moves(screen)
 		pygame.display.flip()
 	
 
